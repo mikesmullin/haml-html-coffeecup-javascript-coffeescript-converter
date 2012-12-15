@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Haml to HTML to Coffeecup to Javascript to CoffeeScript Converter!</title>
+    <style>
+      body {
+        background: black;
+        color: white;
+        margin: 1% 5% 1% 1%;
+      }
+
+      h1 {
+        margin: 1em 0;
+        font-family: sans-serif;
+        font-size: 1.2em;
+        text-align: right;
+      }
+
+      textarea {
+        width: 98%;
+        height: 80px;
+        margin: 1% 0;
+        padding: 1%;
+        background: #222222;
+        border: 1px solid #444444;
+        color: #999999;
+      }
+
+      button {
+        cursor: pointer;
+        background: #222222;
+        border: 1px solid #333333;
+        border-radius: 5px;
+        color: #cccccc;
+        padding: 0.5% 1%;
+        font-weight: bold;
+        margin: 0 0 1% 0;
+        float: right;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://github.com/rgrove/lazyload/raw/release-2.0.3/lazyload.js"></script>
+  </head>
+  <body>
+    <h1>Haml &blacktriangleright; HTML &blacktriangleright; Coffeecup &blacktriangleright; Javascript &blacktriangleright; CoffeeScript Converter!</h1><h2>Haml</h2><textarea class="haml">%section.sample
+      %h1 title
+      %h2 subtitle
+      .content
+        content</textarea><button class="haml2html">Convert to HTML &blacktriangledown;</button><h2>HTML</h2><textarea class="html"></textarea><button class="html2coffeecup">Convert to CoffeeCup &blacktriangledown;</button><h2>Coffeecup / CoffeeScript</h2><textarea class="coffee"></textarea><button class="coffeecup2js">Convert to Javascript &blacktriangledown;</button><h2>Javascript</h2><textarea class="js"></textarea><button class="js2coffee">Convert to CoffeeScript &blacktriangle;</button>
+    <script>
+      window.module = {};
+
+      LazyLoad.js(['http://js2coffee.org/scripts/underscore.min.js', 'https://raw.github.com/uglyog/clientside-haml-js/release_5/lib/ext/underscore.string.js', 'https://raw.github.com/uglyog/clientside-haml-js/release_5/lib/ext/json2.js', 'https://raw.github.com/uglyog/clientside-haml-js/release_5/lib/haml.js', 'http://js2coffee.org/scripts/coffeescript.min.js', 'http://js2coffee.org/scripts/js2coffee.min.js', 'https://raw.github.com/colinta/htmlkup/master/lib/htmlkup.js'], function() {
+        var htmlkup;
+        htmlkup = module.exports;
+        jQuery('button.haml2html').click(function() {
+          return jQuery('textarea.html').val(jQuery.trim(haml.compileHaml({
+            source: jQuery('textarea.haml').val()
+          })()));
+        });
+        jQuery('button.html2coffeecup').click(function() {
+          return jQuery('textarea.coffee').val(jQuery.trim(htmlkup(jQuery('textarea.html').val())));
+        });
+        jQuery('button.coffeecup2js').click(function() {
+          return jQuery('textarea.js').val(jQuery.trim(CoffeeScript.compile(jQuery('textarea.coffee').val(), {
+            bare: 'on'
+          })));
+        });
+        jQuery('button.js2coffee').click(function() {
+          return jQuery('textarea.coffee').val(jQuery.trim(Js2coffee.build(jQuery('textarea.js').val())));
+        });
+        return console.log('ready');
+      });
+    </script>
+  </body>
+</html>
