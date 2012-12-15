@@ -38,8 +38,8 @@
         float: right;
       }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://github.com/rgrove/lazyload/raw/release-2.0.3/lazyload.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="lazyload.js"></script>
   </head>
   <body>
     <h1>Haml &blacktriangleright; HTML &blacktriangleright; Coffeecup &blacktriangleright; Javascript &blacktriangleright; CoffeeScript Converter!</h1><h2>Haml</h2><textarea class="haml">%section.sample
@@ -50,7 +50,7 @@
     <script>
       window.module = {};
 
-      LazyLoad.js(['http://js2coffee.org/scripts/underscore.min.js', 'https://raw.github.com/uglyog/clientside-haml-js/release_5/lib/ext/underscore.string.js', 'https://raw.github.com/uglyog/clientside-haml-js/release_5/lib/ext/json2.js', 'https://raw.github.com/uglyog/clientside-haml-js/release_5/lib/haml.js', 'http://js2coffee.org/scripts/coffeescript.min.js', 'http://js2coffee.org/scripts/js2coffee.min.js', 'https://raw.github.com/colinta/htmlkup/master/lib/htmlkup.js'], function() {
+      LazyLoad.js(['underscore.min.js', 'underscore.string.js', 'json2.js', 'haml.js', 'coffeescript.min.js', 'js2coffee.min.js', 'htmlkup.js'], function() {
         var htmlkup;
         htmlkup = module.exports;
         jQuery('button.haml2html').click(function() {
